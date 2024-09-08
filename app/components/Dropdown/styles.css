@@ -1,0 +1,7 @@
+.visible-true {
+  display: grid;
+}
+
+.visible-false {
+  display: none;
+}
