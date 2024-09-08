@@ -1,9 +1,25 @@
-import Image from 'next/image';
+"use client"
+
+import { Suspense, useEffect } from 'react';
+import { carMakesFetcher } from './lib/dataFetcher';
+import CarPage, { generateStaticPath } from './lib/generateStaticPath';
+import Link from 'next/link';
+import { LoadingScreen } from './components/LoadingScreen';
 
 export default function Filter() {
+
+  useEffect(() => {
+    carMakesFetcher("GetMakesForVehicleType/car?format=json");
+  }, [])
   return (
-    <div>
-      123
-    </div>
+    <Suspense fallback={<LoadingScreen />}>
+      <div>
+        {
+          <Link href={`/result/${441}/${2020}`}>        
+          123
+          </Link>
+        }
+      </div>
+    </Suspense>
   );
 }
